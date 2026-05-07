@@ -1,0 +1,59 @@
+* { margin: 0; padding: 0; box-sizing: border-box; touch-action: manipulation; }
+body { font-family: 'Poppins', sans-serif; background: #000; overflow: hidden; width: 100vw; height: 100vh; }
+
+#pagina1 {
+    width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%);
+}
+.vidro {
+    background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(20px);
+    padding: 30px 15px; border-radius: 25px; text-align: center; width: 90%; max-width: 400px;
+}
+.foto-perfil { width: 100px; height: 100px; border-radius: 50%; border: 3px solid white; object-fit: cover; margin: 5px; }
+h1 { font-family: 'Dancing Script', cursive; color: #fff; font-size: 2.5rem; margin-bottom: 10px; }
+.mensagem-branca { color: #fff; font-weight: 600; font-size: 1rem; line-height: 1.4; margin: 15px 0; text-shadow: 1px 1px 5px rgba(0,0,0,0.3); }
+.botao-magico { padding: 15px 30px; border-radius: 50px; border: none; background: #ff4d6d; color: #fff; font-weight: bold; cursor: pointer; box-shadow: 0 5px 15px rgba(255,77,109,0.4); }
+
+/* PAGINA 2: ORGANIZAÇÃO CENTRAL */
+#pagina2 { width: 100%; height: 100vh; background: #000; position: relative; }
+
+.centro-surpresa {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    pointer-events: none; /* Deixa o toque passar para as fotos/canvas se necessário */
+}
+
+/* O Canvas ocupa tudo, mas as partículas se formam no centro */
+#heartCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: auto; }
+
+.header-surpresa {
+    position: relative; z-index: 100; /* Acima do Canvas */
+    margin-top: 150px; /* Joga o texto fixo um pouco para baixo do centro do coração */
+    text-align: center; width: 100%;
+}
+
+.texto-fixo-romantico {
+    font-family: 'Dancing Script', cursive;
+    color: #ff0000; /* Vermelho Paixão */
+    font-size: 2.8rem;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 10px #fff;
+    font-weight: bold;
+}
+
+/* FOTOS MURAL ARRASTÁVEIS */
+.foto-mural { position: absolute; width: 130px; height: 130px; border: 3px solid white; border-radius: 12px; z-index: 50; object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+.drag:nth-child(1) { top: 8%; left: 5%; }
+.drag:nth-child(2) { bottom: 18%; left: 5%; }
+.drag:nth-child(3) { top: 8%; right: 5%; }
+.drag:nth-child(4) { bottom: 18%; right: 5%; }
+
+.btn-musica-fixo { position: absolute; bottom: 20px; right: 20px; z-index: 1000; background: #ff4d6d; border: none; color: #fff; padding: 10px 18px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; pointer-events: auto; }
+.chuva-flores span { position: absolute; top: -50px; font-size: 20px; animation: cair 5s linear infinite; z-index: 1; }
+@keyframes cair { to { transform: translateY(110vh) rotate(360deg); } }
+
+/* AJUSTE PARA TELAS PEQUENAS (Android/iOS) */
+@media (max-width: 600px) {
+    .foto-mural { width: 110px; height: 110px; }
+    h1 { font-size: 2.2rem; }
+    .texto-fixo-romantico { font-size: 2.2rem; margin-top: 120px; }
+}
